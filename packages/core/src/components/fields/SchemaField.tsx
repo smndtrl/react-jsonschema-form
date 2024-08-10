@@ -289,6 +289,10 @@ function SchemaFieldRender<T = any, S extends StrictRJSFSchema = RJSFSchema, F e
   const _OneOfField = registry.fields.OneOfField;
   const isReplacingAnyOrOneOf = uiSchema?.['ui:field'] && uiSchema?.['ui:fieldReplacesAnyOrOneOf'] === true;
 
+  if (isReplacingAnyOrOneOf) {
+    return <FieldComponent {...fieldProps} />;
+  }
+
   return (
     <FieldTemplate {...fieldProps}>
       <>
